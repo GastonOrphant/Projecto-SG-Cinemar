@@ -12,9 +12,6 @@ class Usuario:
         else: 
             tipoUsuario = 'Cliente'
         return(f"Nombre: {self.nombreUsuario}, mail: {self.mail}, tipo de usuario: {tipoUsuario}")
-            
 
-#Pruebas
-Gaston = Usuario("Gaston", "gaston@gmail.com", "asd123", 1)
-print(Gaston.__str__())
-
+    def insertarEnBD(self):
+        pass
