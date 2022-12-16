@@ -1,4 +1,4 @@
-import sqlite3
+from conexion import Conexion_BD
 
 
 def select_usuario_nombre(conn, nombre):

@@ -3,17 +3,17 @@ import tkinter as tk
 def login():
     # create the main window
     root = tk.Tk()
+    root.wm_iconbitmap('assets/favicon.png')
     root.title("Login")
 
-    # create labels for the form fields
+    # labels
     mail_label = tk.Label(root, text="Mail:")
     password_label = tk.Label(root, text="Password:")
 
-    # create the form fields
+    # forms
     mail_field = tk.Entry(root)
     password_field = tk.Entry(root, show="*")
-
-    # create the submit button
+    # boton de ingresar
     submit_button = tk.Button(root, text="Ingresar")
 
     # create a function to handle the form submission
@@ -21,7 +21,6 @@ def login():
         # get the values entered in the form fields
         mail = mail_field.get()
         password = password_field.get()
-
         # print the values to the console
         print("Mail:", mail)
         print("Password:", password)
@@ -39,4 +38,6 @@ def login():
     # start the main loop
     root.mainloop()
 
-# Prueba de como subir a Github
+
+if __name__ == "__main__":
+    login()    

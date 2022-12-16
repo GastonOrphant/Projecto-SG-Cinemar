@@ -1,4 +1,4 @@
-
+from database.conexion import Conexion_BD
 
 def insertar_usuario(conn, usuario):
     cur = conn.cursor()
@@ -7,4 +7,6 @@ def insertar_usuario(conn, usuario):
     conn.commit()
 
 def insertar_sala(conn, sala):
-        
+    print('sala insertada')
+
+conn = Conexion_BD('database/cinemar.db')  

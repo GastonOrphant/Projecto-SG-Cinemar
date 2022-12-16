@@ -1,4 +1,4 @@
-
+from database.conexion import Conexion_BD
 class Usuario:
     def __init__(self, nombreUsuario, mail, contrasenia, tipo):
         self.nombreUsuario = nombreUsuario
@@ -13,5 +13,10 @@ class Usuario:
             tipoUsuario = 'Cliente'
         return(f"Nombre: {self.nombreUsuario}, mail: {self.mail}, tipo de usuario: {tipoUsuario}")
 
-    def insertarEnBD(self):
-        pass
+    def insertarEnBD(self, conn):
+        sql = 'INSERT INTO usuario VALUES (?, ?, ?, ?)'
+        usuario = f"{self.nombreUsuario} ,{self.mail}, {self.contrasenia}, {self.tipo}"
+        conn.consult(sql, usuario)
+        conn.commit()
+
+conn = Conexion_BD()

@@ -1,8 +1,8 @@
 import sqlite3
 
 class Conexion_BD():
-    def __init__(self, database):
-        self.conexion = sqlite3.connect(database)
+    def __init__(self):
+        self.conexion = sqlite3.connect('cinemar.db')
         self.cursor = self.conexion.cursor()
 
     def consult(self, consulta):
@@ -17,3 +17,5 @@ class Conexion_BD():
 
     def close(self):
         self.conexion.close()
+
+        
