@@ -22,7 +22,7 @@ class Usuario:
     def usuarioEstaEnBD(self, mail):
         '''Retorna True or False dependiendo de si el mail está o no en la base de datos'''
         conn = Conexion_BD()
-        usuario = conn.consult(f"SELECT mail FROM usuario WHERE mail = '{mail}").fetchone()
+        usuario = conn.consult(f"SELECT mail FROM usuario WHERE mail = '{mail}'").fetchone()
         conn.close()
         return usuario != None
 

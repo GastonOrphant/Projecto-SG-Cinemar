@@ -1,4 +1,5 @@
 import tkinter as tk
+from clases.usuario import Usuario 
 
 def login():
     # create the main window
@@ -39,5 +40,20 @@ def login():
     root.mainloop()
 
 
+#EJEMPLO PARA REALIZAR EL REGISTRO DE UN USUARIO
+def registro():
+    nombre = input("Ingrese nombre de usuario: ")
+    mail = input("Ingrese su mail: ")
+    contrasenia = input("Ingrese una contraseña: ")
+    tipo = input("Ingrese el tipo de usuario que es (0 = Cliente, 1 = Admin): ")
+    usuario = Usuario(nombre, mail, contrasenia, tipo)
+    if usuario.usuarioEstaEnBD(mail):
+        print("Usuario ya registrado.")
+    else:    
+        usuario.insertarEnBD()
+
+
+
 if __name__ == "__main__":
-    login()    
+    #login()
+    registro()    
