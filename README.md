@@ -5,7 +5,7 @@ Cinemar es una empresa que se dedica a proyectar películas esencialmente
 dedicadas al público adolescente.
 El cine cuenta con una cantidad de salas con diferentes capacidades (siendo esta capacidad la cantidad de butacas), también dispone de salas 2D como 3D
 variando el precio de las entradas.
-Cuando un cliente se presenta enventanillamuestrasutarjetadedescuento,si
+Cuando un cliente se presenta en ventanilla muestra su tarjeta de descuento,si
 la tiene, se le efectúa un descuento en el valor de l aentrada,si no pueden solicitar una
 sí acudieron al menos 6 veces en 3 meses,en caso contrario el precio de la entrada no tendrá descuento alguno.
 Actualmente la tabla de descuentos para los que tienen la tarjeta de
