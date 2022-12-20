@@ -14,11 +14,18 @@ class Usuario:
             tipoUsuario = 'Cliente'
         return(f"Nombre: {self.nombreUsuario}, mail: {self.mail}, tipo de usuario: {tipoUsuario}")
 
-    def insertarEnBD(self):
+    def insertarUsuarioEnBD(self):
         '''Inserta un usuario en la base de datos'''
         conn = Conexion_BD()
         conn.consult(f'INSERT INTO usuario VALUES ({self.nombreUsuario} ,{self.mail}, {self.contrasenia}, {self.tipo}, {self.tarjeta})')
         conn.commit()
+        conn.close()
+
+    def eliminarUsuario(self, idUsuario):
+        conn = Conexion_BD()
+        conn.consult(f'DELETE FROM usuario WHERE idUsuario = {idUsuario}')
+        conn.commit()
+        conn.close()    
 
     def usuarioEstaEnBD(self, mail):
         '''Retorna True or False dependiendo de si el mail está o no en la base de datos'''
@@ -30,6 +37,6 @@ class Usuario:
     def validarUsuario(self, mail, contrasenia):
         conn= Conexion_BD()
         usuario=conn.consult(f"SELECT idUsuario, tipoUsuario, contrasenia FROM usuario WHERE mail = '{mail}'").fetchone()
+        conn.close()
         if usuario != None and usuario[2] == contrasenia:
-            return usuario[0], usuario[1]
-        conn.close()  
+            return usuario[0], usuario[1]  
