@@ -14,7 +14,7 @@ class Usuario:
             tipoUsuario = 'Cliente'
         return(f"Nombre: {self.nombreUsuario}, mail: {self.mail}, tipo de usuario: {tipoUsuario}")
 
-    def insertarEnBD(self, conn):
+    def insertarEnBD(self):
         '''Inserta un usuario en la base de datos'''
         conn = Conexion_BD()
         conn.consult(f'INSERT INTO usuario VALUES ({self.nombreUsuario} ,{self.mail}, {self.contrasenia}, {self.tipo}, {self.tarjeta})')
