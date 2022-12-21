@@ -33,21 +33,21 @@ def login():
                 if Usuario.esAdmin("",Usuario.idUsuario("",mail)):
                     root.destroy()
                     admin()
-                    pass
                 else:
                     root.destroy()
-                    cliente()          
+                    cliente(validacion[0])          # validacion[0] contiene el idCliente
         else:
             print("El usuario no existe en la base de datos")
     submit_button = tk.Button(root, text="Ingresar", command=handle_submit)
-    submit_button.pack()        
+    submit_button.pack()  
+
     # Boton de Registro
     def handle_register():
         root.destroy()
         registro()
     register_button = tk.Button(root, text="Registrarse!", command=handle_register)  
     register_button.pack() 
-    # start the main loop
+    # mainloop
     root.mainloop()
 
 

@@ -139,7 +139,16 @@ def admin():
     eliminar_button = tk.Button(root, text="Eliminar una sala", command=eliminar_sala) 
     eliminar_button.pack()   
 
-
+    def ver_salas():
+        root = tk.Tk()
+        root.title("SALAS")
+        salas = Sala.verTodas()
+        listbox = tk.Listbox(root)
+        for sala in salas:
+            listbox.insert(tk.END, sala)
+        listbox.pack()    
+    ver_salas_button = tk.Button(root, text="Ver salas", command=ver_salas)
+    ver_salas_button.pack()  
 
     def modificar_descuentos():
         # IMPLEMENTAR
