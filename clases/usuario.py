@@ -1,6 +1,6 @@
 
 class Usuario:
-    def __init__(self, nombreUsuario, mail, contrasenia, tipo,pelicula[]):
+    def __init__(self, nombreUsuario, mail, contrasenia, tipo,pelicula=[]):
         self._nombreUsuario = nombreUsuario
         self._mail = mail
         self._contrasenia = contrasenia

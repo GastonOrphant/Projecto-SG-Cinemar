@@ -1,11 +1,11 @@
-class reserva:
-    def __init__(self, cliente=[],pelicula=[],medio_pago,salas[],silla):
-        self._cliente=cliente
-        self._pelicula=pelicula
-        self._medio_pago=medio_pago
-        self._salas=salas
-        self._silla=silla
-    def crear_reserva():
+class reserva ():
+    def __init__(self,MedioPago,silla, cliente=[],pelicula=[],salas=[]):
+        self.cliente=cliente
+        self.pelicula=pelicula
+        self.MedioPago=MedioPago
+        self.salas=salas
+        self.silla=silla
+    def crear_reserva(self, cliente, salas=[]):
         pass
     def consulta_reserva():
         pass
