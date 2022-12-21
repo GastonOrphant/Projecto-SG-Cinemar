@@ -1,7 +1,9 @@
 import tkinter as tk
 from clases.usuario import Usuario
-from administracion import Admin
-from cliente import Cliente
+from administracion import *
+from cliente import *
+
+PRECIO_ENTRADA = 500
 
 def login():
     # crear la ventana principal para el login
@@ -30,11 +32,11 @@ def login():
             if validacion != None:
                 if Usuario.esAdmin("",Usuario.idUsuario("",mail)):
                     root.destroy()
-                    Admin()
+                    admin()
                     pass
                 else:
                     root.destroy()
-                    #Cliente()          
+                    cliente()          
         else:
             print("El usuario no existe en la base de datos")
     submit_button = tk.Button(root, text="Ingresar", command=handle_submit)
@@ -98,7 +100,7 @@ def registro():
     # start the main loop
     root.mainloop()        
 
-def descuentos(precioEntrada, fecha):
+def descuentos(PRECIO_ENTRADA, fecha):
     '''Lunes y Miércoles: 20% | Martes y Jueves: 15% | Viernes, Sábados y Domingos: 10% 
                     Siendo modificable según los directivos.'''
     if (fecha == 'Lunes') or (fecha == 'Miercoles'):
@@ -107,7 +109,7 @@ def descuentos(precioEntrada, fecha):
         descuento = 0.15
     else:
         descuento = 0.1
-    return(precioEntrada - precioEntrada*descuento)             
+    return(PRECIO_ENTRADA - PRECIO_ENTRADA*descuento)             
 
 
 if __name__ == "__main__":
