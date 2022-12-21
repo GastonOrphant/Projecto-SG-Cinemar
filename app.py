@@ -1,5 +1,7 @@
 import tkinter as tk
-from clases.usuario import Usuario 
+from clases.usuario import Usuario
+from administracion import Admin
+from cliente import Cliente
 
 def login():
     # crear la ventana principal para el login
@@ -23,13 +25,18 @@ def login():
         mail = mail_field.get()
         password = password_field.get()
         # verifica que el mail ingresado este en la base de datos
-        if Usuario.usuarioEstaEnBD(mail):
-            if Usuario.validarUsuario(mail, password):
-                # realiza el login y pasa a ventana de reservas
-                pass
+        if Usuario.usuarioEstaEnBD("", mail):
+            validacion = Usuario.validarUsuario("",mail, password)
+            if validacion != None:
+                if Usuario.esAdmin("",Usuario.idUsuario("",mail)):
+                    root.destroy()
+                    Admin()
+                    pass
+                else:
+                    root.destroy()
+                    #Cliente()          
         else:
-            pass
-            # CARTEL USUARIO INCORRECTO
+            print("El usuario no existe en la base de datos")
     submit_button = tk.Button(root, text="Ingresar", command=handle_submit)
     submit_button.pack()        
     # Boton de Registro
@@ -84,7 +91,8 @@ def registro():
         if usuario.usuarioEstaEnBD(mail):
             print("Usuario ya registrado.")
         else:    
-            usuario.insertarEnBD()
+            usuario.insertarUsuarioEnBD()
+            print("Usuario registrado con exito!")
     submit_button = tk.Button(root, text="Registrarse", command=handle_submit)        
     submit_button.pack()
     # start the main loop
@@ -104,3 +112,4 @@ def descuentos(precioEntrada, fecha):
 
 if __name__ == "__main__":
     login()
+    
