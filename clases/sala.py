@@ -8,12 +8,12 @@ class Sala:
 
     def insertarSalaEnBD(self):
         conn = Conexion_BD()
-        conn.consult(f'INSERT INTO sala VALUES ({self.pelicula}, {self.capacidadSala}, {self.horario}')
+        conn.consult(f'INSERT INTO sala (pelicula, capacidadSala, horario) VALUES ("{self.pelicula}", "{self.capacidadSala}", "{self.horario}"')
         conn.commit()
         conn.close()
 
     def eliminarSala(self, idSala):
         conn =  Conexion_BD()
-        conn.consult(f'DELETE FROM sala WHERE idSala = {idSala}')        
+        conn.consult(f'DELETE FROM sala WHERE idSala = "{idSala}"')        
         conn.commit()
         conn.close()

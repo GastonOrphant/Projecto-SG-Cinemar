@@ -9,19 +9,25 @@ class Reserva:
     def insertarReservaEnBD(self):
         '''Insertar una reserva en la base de datos'''
         conn = Conexion_BD()
-        conn.consult(f'INSERT INTO reserva VALUES ({self.idCliente}, {self.idSala}, {self.fecha}')
+        conn.consult(f'INSERT INTO reserva (idCliente, idSala, fecha) VALUES ("{self.idCliente}", "{self.idSala}", "{self.fecha}"')
         conn.commit()
         conn.close()
 
-    def mostrarReservasPorUsuario(self, idCliente):
+    def mostrarReservasPorUsuario(idCliente):
         conn = Conexion_BD()
-        reservas = conn.consult(f'SELECT * FROM reserva WHERE idCliente = {idCliente}').fetchall()
+        reservas = conn.consult(f'SELECT * FROM reserva WHERE idCliente = "{idCliente}"').fetchall()
         conn.close()    
         return reservas
 
-    def eliminarReserva(self, idReserva):
+    def eliminarReserva(idReserva):
         conn = Conexion_BD()
-        if conn.consult(f'SELECT * FROM reserva WHERE idReserva = {idReserva}'):
-            conn.consult(f'DELETE FROM reserva WHERE idReserva = {idReserva}')
+        if conn.consult(f'SELECT * FROM reserva WHERE idReserva = "{idReserva}"'):
+            conn.consult(f'DELETE FROM reserva WHERE idReserva = "{idReserva}"')
             conn.commit()
-        conn.close()        
+        conn.close()
+
+    def mostrarTodasLasReservas(self):
+        conn = Conexion_BD()
+        reservas = conn.consult(f'SELECT * FROM reserva').fetchall()
+        conn.close()
+        return reservas

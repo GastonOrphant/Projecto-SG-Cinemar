@@ -9,7 +9,7 @@ class Funcion:
 
     def insertarFuncionEnBD(self):
         conn = Conexion_BD()
-        conn.consult(f'INSERT INTO funcion VALUES ({self.idSala}, {self.fecha}, {self.horario}, {self.estado})')
+        conn.consult(f'INSERT INTO funcion (idSala, fecha, horario, estado) VALUES ("{self.idSala}", "{self.fecha}", "{self.horario}", "{self.estado}")')
         conn.commit()
         conn.close()
 
@@ -22,14 +22,14 @@ class Funcion:
 
     def mostrarUnaFuncion(self, idFuncion):
         conn = Conexion_BD()
-        funcion = conn.consult(f'SELECT * FROM funcion WHERE idFuncion = {idFuncion}').fetchone()
+        funcion = conn.consult(f'SELECT * FROM funcion WHERE idFuncion = "{idFuncion}"').fetchone()
         conn.commit()
         conn.close()
         return funcion
 
     def eliminarUnaFuncion(self, idFuncion):
         conn = Conexion_BD()
-        if conn.consult(f'SELECT * FROM funcion WHERE idFuncion = {idFuncion}').fetchall():
-            conn.consult(f'DELETE FROM funcion WHERE idFuncion = {idFuncion}')
+        if conn.consult(f'SELECT * FROM funcion WHERE idFuncion = "{idFuncion}"').fetchall():
+            conn.consult(f'DELETE FROM funcion WHERE idFuncion = "{idFuncion}"')
             conn.commit()
             conn.close()

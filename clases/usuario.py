@@ -17,13 +17,13 @@ class Usuario:
     def insertarUsuarioEnBD(self):
         '''Inserta un usuario en la base de datos'''
         conn = Conexion_BD()
-        conn.consult(f'INSERT INTO usuario VALUES ({self.nombreUsuario} ,{self.mail}, {self.contrasenia}, {self.tipo}, {self.tarjeta})')
+        conn.consult(f'INSERT INTO usuario (nombreUsuario, mail, contraseña, tipoUsuario, tarjetaDescuento) VALUES ("{self.nombreUsuario}" , "{self.mail}", "{self.contrasenia}", "{self.tipo}", "{self.tarjeta}")')
         conn.commit()
         conn.close()
 
     def eliminarUsuario(self, idUsuario):
         conn = Conexion_BD()
-        conn.consult(f'DELETE FROM usuario WHERE idUsuario = {idUsuario}')
+        conn.consult(f'DELETE FROM usuario WHERE idUsuario = "{idUsuario}"')
         conn.commit()
         conn.close()    
 
@@ -36,7 +36,17 @@ class Usuario:
 
     def validarUsuario(self, mail, contrasenia):
         conn= Conexion_BD()
-        usuario=conn.consult(f"SELECT idUsuario, tipoUsuario, contrasenia FROM usuario WHERE mail = '{mail}'").fetchone()
+        usuario=conn.consult(f"SELECT idUsuario, tipoUsuario, contraseña FROM usuario WHERE mail = '{mail}'").fetchone()
         conn.close()
         if usuario != None and usuario[2] == contrasenia:
-            return usuario[0], usuario[1]  
+            return usuario[0], usuario[1] 
+
+    def idUsuario(self, mail):
+        conn = Conexion_BD()
+        id = conn.consult(f"SELECT idUsuario FROM usuario WHERE mail = '{mail}'").fetchone()
+        return id[0]
+
+    def esAdmin(self, idUsuario):
+        conn = Conexion_BD()
+        tipo = conn.consult(f"SELECT tipoUsuario FROM usuario WHERE idUsuario = '{idUsuario}'").fetchone()
+        return (tipo[0] == 1)
