@@ -6,7 +6,7 @@ from cliente import *
 PRECIO_ENTRADA = 500
 
 def login():
-    # crear la ventana principal para el login
+    '''crear la ventana principal para el login'''
     root = tk.Tk()
     root.title("Login")
     root.geometry("300x200")
@@ -50,9 +50,8 @@ def login():
     # mainloop
     root.mainloop()
 
-
-# Realiza el registro de un usuario
 def registro():
+    '''Realiza el registro de un usuario'''
     root = tk.Tk()
     root.title("Registro de usuario")
     root.geometry("640x480")
@@ -99,19 +98,7 @@ def registro():
     submit_button.pack()
     # start the main loop
     root.mainloop()        
-
-def descuentos(PRECIO_ENTRADA, fecha):
-    '''Lunes y Miércoles: 20% | Martes y Jueves: 15% | Viernes, Sábados y Domingos: 10% 
-                    Siendo modificable según los directivos.'''
-    if (fecha == 'Lunes') or (fecha == 'Miercoles'):
-        descuento = 0.2
-    elif (fecha == 'Martes') or (fecha == 'Jueves'):
-        descuento = 0.15
-    else:
-        descuento = 0.1
-    return(PRECIO_ENTRADA - PRECIO_ENTRADA*descuento)             
-
-
+    
 if __name__ == "__main__":
     login()
     

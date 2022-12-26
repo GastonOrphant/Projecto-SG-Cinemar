@@ -1,10 +1,11 @@
 from database.conexion import Conexion_BD
 
 class Sala:
-    def __init__(self, pelicula, capacidadSala, horario):
+    def __init__(self, pelicula, capacidadSala, horario):#, tipoSala):
         self.pelicula = pelicula
         self.capacidadSala = capacidadSala
         self.horario = horario
+        #self.tipoSala = tipoSala
 
     def insertarSalaEnBD(self):
         conn = Conexion_BD()

@@ -10,7 +10,8 @@ def admin():
     # BOTONES
     def ver_todas_reservas():
         root = tk.Tk()
-        listbox = tk.Listbox(root)
+        root.title("Todas las reservas")
+        listbox = tk.Listbox(root, width=50, height=30)
         reservas = Reserva.mostrarTodasLasReservas("")
         for reserva in reservas:
             listbox.insert(tk.END, reserva)
@@ -20,6 +21,7 @@ def admin():
 
     def ver_reservas_usuario():
         root = tk.Tk()
+        root.title("Reservas del usuario")
         usuario_label = tk.Label(root, text="Ingrese el mail de un usuario:")
         usuario_label.pack()
         usuario_field = tk.Entry(root)
@@ -29,7 +31,7 @@ def admin():
             if Usuario.usuarioEstaEnBD("", usuario):
                 idUsuario = Usuario.idUsuario("", usuario)
                 reservas = Reserva.mostrarReservasPorUsuario(idUsuario)
-                listbox = tk.Listbox(root)
+                listbox = tk.Listbox(root, width=50, height=30)
                 for reserva in reservas:
                     listbox.insert(tk.END, reserva)
                 listbox.pack()
@@ -43,13 +45,14 @@ def admin():
 
     def crear_sala():
         root = tk.Tk()
+        root.title("Creación de salas")
         pelicula_label = tk.Label(root, text="Ingrese el nombre de la pelicula a ingresar")
         pelicula_label.pack()
         pelicula_field = tk.Entry(root)
         pelicula_field.pack()
         horario_label = tk.Label(root, text="Seleccione un horario para la pelicula")
         horario_label.pack()
-        listbox = tk.Listbox(root)
+        listbox = tk.Listbox(root, width=50, height=30)
         horarios=["10:30", "14:30", "15:30", "16:30", "17:30", "18:30", "20:30", "22:30"]
         for horario in horarios:
             listbox.insert(tk.END, horario)
@@ -73,6 +76,7 @@ def admin():
 
     def modificar_sala():
         root = tk.Tk()
+        root.title("Modificación de salas")
         pelicula_label = tk.Label(root, text="Ingrese el nombre de la pelicula cuya sala quiere modificar")
         pelicula_label.pack()
         pelicula_field = tk.Entry(root)
@@ -119,6 +123,7 @@ def admin():
 
     def eliminar_sala():
         root = tk.Tk()
+        root.title("Eliminación de salas")
         sala_label = tk.Label(root, text="Ingrese pelicula a eliminar")
         sala_label.pack()
         sala_field = tk.Entry(root)
@@ -143,7 +148,7 @@ def admin():
         root = tk.Tk()
         root.title("SALAS")
         salas = Sala.verTodas()
-        listbox = tk.Listbox(root)
+        listbox = tk.Listbox(root, width=50, height=30)
         for sala in salas:
             listbox.insert(tk.END, sala)
         listbox.pack()    
@@ -154,6 +159,10 @@ def admin():
         # IMPLEMENTAR
         pass
 
+    def cerrar_sesion():
+        # IMPLEMENTAR
+        pass
 
     root.mainloop()
          
+    # MODIFICAR LISTBOX A TREEVIEW         

@@ -13,7 +13,7 @@ def cliente(id):
         root = tk.Tk()
         root.title("Creación de reservas")
         salas = Sala.verTodas()
-        listbox = tk.Listbox(root)
+        listbox = tk.Listbox(root, width=50, height=30)
         for sala in salas:
             listbox.insert(tk.END, sala)
         listbox.pack()
@@ -47,7 +47,7 @@ def cliente(id):
         root = tk.Tk()
         root.title("Tus Reservas")
         reservas = Reserva.mostrarReservasPorUsuario(idCliente)
-        listbox = tk.Listbox(root)
+        listbox = tk.Listbox(root, width=50, height=30)
         for reserva in reservas:
             listbox.insert(tk.END, reserva)
         listbox.pack()       
@@ -65,7 +65,7 @@ def cliente(id):
         def handle_aceptar():
             idReserva = id_field.get()
             salas = Sala.verTodas()
-            listbox = tk.Listbox(root)
+            listbox = tk.Listbox(root, width=50, height=30)
             for sala in salas:
                 listbox.insert(tk.END, sala)
             listbox.pack()
@@ -99,7 +99,7 @@ def cliente(id):
         root = tk.Tk()
         root.title("SALAS")
         salas = Sala.verTodas()
-        listbox = tk.Listbox(root)
+        listbox = tk.Listbox(root, width=50, height=30)
         for sala in salas:
             listbox.insert(tk.END, sala)
         listbox.pack()    
@@ -112,4 +112,10 @@ def cliente(id):
         # IMPLEMENTAR
         pass
     
+    def cerrar_sesion():
+        # IMPLEMENTAR
+        pass
+
     root.mainloop()
+
+    # MODIFICAR LISTBOX A TREEVIEW
